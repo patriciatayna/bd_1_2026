@@ -1,0 +1,74 @@
+Projeto de Banco de Dados
+
+Requisitos
+Os requisitos básicos do projeto de banco de dados são:
+• O projeto pode ser realizado em grupo composto por 2 até 4 estudantes.
+• O trabalho obrigatoriamente deve ser apresentado por todos os componentes do
+grupo.
+• Apenas projetos que estejam funcionando terão suas notas contabilizadas.
+• Pode utilizar ferramentas de IA, porém, deve ser informado onde foi utilizado e com
+qual objetivo.
+
+Tema do Projeto
+Qualquer banco de dados que possa ser utilizado para facilitar a vida acadêmica na UnB.
+Pode ser para auxiliar os professores, alunos, reitoria, comunicação com a sociedade.
+
+Datas Importantes:
+- Enviar os nomes dos componentes do grupo e o tema do projeto: 28/04, 05/05
+- Entrega da primeira parte do projeto: 30/05
+- Entrega/Apresentação final do Projeto: 30/06-02/07
+
+Regras:
+- Deve ter no mínimo 10 entidades.
+- Cada tabela deve ter no mínimo 5 registros.
+- O CRUD deve estar funcionando.
+- Pode utilizar qualquer SGBD relacional.
+- Pode utilizar qualquer linguagem de programação para o CRUD. Porém precisa de uma
+interface gráfica para o usuário leigo ter acesso ao CRUD.
+
+Entrega da Primeira Parte do Projeto:
+• Introdução
+• Modelo de Entidade Relacionamento. Usando alguma ferramenta de modelagem.
+• Modelo Relacional. Usando alguma ferramenta de modelagem.
+• O script SQL que gerou o banco de dados
+• A indicação do uso de IA.
+
+Entrega Final do Projeto:
+• Introdução
+• Modelo de Entidade Relacionamento. Usando alguma ferramenta de modelagem.
+• Modelo Relacional. Usando alguma ferramenta de modelagem.
+• O script SQL que gerou o banco de dados.
+▪ Na implementação de pelo menos uma tabela usar um gerador de chave
+primária automático do SGBD selecionado para o projeto.
+• A construção da camada de persistência. Enviar o link do github com os códigos
+fontes e um diagrama apresentando como a interface gráfica do programa acessa a
+camada de persistência.
+• Um programa com as funções de CRUD (Create Read Update Delete) para o seu
+sistema.
+▪ Acessar mais de uma tabela nas mesmas funções CRUD para garantir
+integridade referencial
+• Utilização de pelo menos uma View.
+• Utilização de pelo menos uma Procedure.
+• Utilização de pelo menos um Trigger.
+• Inserção de um dado binário no banco, pode ser foto, arquivo PDF ou outro tipo
+de arquivo.
+• A indicação do uso de IA.
+
+Partes apresentadas e encaminha pelo Aprender3
+
+No formato pdf em apenas UM arquivo para a primeira entrega:
+• Introdução
+• Diagrama de Entidade Relacionamento
+• Modelo Relacional
+• A indicação do uso de IA
+
+No formato pdf em apenas UM arquivo para a entrega final:
+• Introdução
+• Diagrama de Entidade Relacionamento
+• Modelo Relacional
+• O diagrama da camada de mapeamento para uma tabela do banco de dados
+• No início do PDF informar o endereço do github no início do projeto
+• A indicação do uso de IA
+Colocar no github
+• O script SQL que gerou o banco de dados
+• Todos os códigos do projeto. 
