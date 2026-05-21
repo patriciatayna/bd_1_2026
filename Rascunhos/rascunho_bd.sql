@@ -6,9 +6,9 @@ CREATE TABLE Turma (
     horario VARCHAR(10),
     sala VARCHAR(10),
     
-	foreign key id_prof CHAR(8),
-	foreign key cod_disciplina CHAR(7),
-    foreign key id_curso CHAR(5);
+	foreign key (id_prof) references Professor(id_prof),
+    foreign key (id_curso) references Curso(id_curso),
+	foreign key (cod_disc) references Disciplina(cod_disc),
 );
 
 CREATE TABLE Professor (
@@ -19,7 +19,8 @@ CREATE TABLE Professor (
     departamento CHAR(3),
     sala VARCHAR(10),
 
-	foreign key id_turma VARCHAR(8);
+	foreign key (id_turma) references Turma(id_turma),
+	foreign key (cod_dep) references Departamento(cod_dep);
 );
 
 -- -- --
