@@ -1,4 +1,4 @@
-CREATE DATABASE gerenciador_de_estudos;
+-- CREATE DATABASE gerenciador_de_estudos;
 -- acessar base de dados
 
 CREATE TABLE Departamento (
@@ -17,24 +17,31 @@ CREATE TABLE Professor (
 	foreign key (departamento) references Departamento(cod_departamento)
 );
 
+CREATE TABLE Disciplina (
+  	cod_disciplina CHAR(7), 
+  	nome VARCHAR(30), 
+  	quantidade_horas INT,
+  	departamento CHAR(3),
+  
+  	foreign key (departamento) references Departamento(cod_departamento)
+);
+
 CREATE TABLE Turma (
 	id_turma CHAR(8) primary key,
   
   	professor CHAR(8),
   	disciplina CHAR(7),
-	
     horario VARCHAR(10),
     sala VARCHAR(10),
     
 	foreign key (professor) references Professor(id_prof),
-	foreign key (disciplina) references Disciplina(cod_disc)
+	foreign key (disciplina) references Disciplina(cod_disciplina)
 );
 
 -- -- --
--- CREATE TABLE Aluno,
--- CREATE TABLE Curso,
--- CREATE TABLE Avaliacao,
--- CREATE TABLE Disciplina,
--- CREATE TABLE Conteudo,
--- CREATE TABLE Estudos,
--- CREATE TABLE FeedbackTurma;
+-- CREATE TABLE Aluno (id_aluno, nome, matr, senha),
+-- CREATE TABLE Curso (id_curso, nome, turno, departamento),
+-- CREATE TABLE Avaliacao (id_avaliacao, data, peso, titulo, tipo),
+-- CREATE TABLE Conteudo (id_conteudo, titulo, descricao),
+-- CREATE TABLE PlanoEstudos (id_plano_estudos, tempo, status, data),
+-- CREATE TABLE FeedbackDiscip (id_fb, dificuldade, comentario, nota_prof);
