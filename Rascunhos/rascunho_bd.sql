@@ -1,26 +1,33 @@
 CREATE DATABASE gerenciador_de_estudos;
+-- acessar base de dados
 
-CREATE TABLE Turma (
-	primary key id_turma CHAR(8),
-    
-    horario VARCHAR(10),
-    sala VARCHAR(10),
-    
-	foreign key (id_prof) references Professor(id_prof),
-    foreign key (id_curso) references Curso(id_curso),
-	foreign key (cod_disc) references Disciplina(cod_disc),
+CREATE TABLE Departamento (
+	cod_departamento CHAR(3) PRIMARY KEY,
+	nome VARCHAR(20)
 );
 
 CREATE TABLE Professor (
-	primary key id_prof varchar(8),
-    nome varchar(30),
+	id_prof CHAR(8) primary key,
+    nome VARCHAR(30),
     
-	email varchar(30) UNIQUE,
+	email VARCHAR(30) UNIQUE,
     departamento CHAR(3),
     sala VARCHAR(10),
 
-	foreign key (id_turma) references Turma(id_turma),
-	foreign key (cod_dep) references Departamento(cod_dep);
+	foreign key (departamento) references Departamento(cod_departamento)
+);
+
+CREATE TABLE Turma (
+	id_turma CHAR(8) primary key,
+  
+  	professor CHAR(8),
+  	disciplina CHAR(7),
+	
+    horario VARCHAR(10),
+    sala VARCHAR(10),
+    
+	foreign key (professor) references Professor(id_prof),
+	foreign key (disciplina) references Disciplina(cod_disc)
 );
 
 -- -- --
