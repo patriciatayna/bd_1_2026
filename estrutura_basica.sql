@@ -1,14 +1,14 @@
---DROP TABLE IF EXISTS demo -- para sqlonline.com
+DROP TABLE IF EXISTS demo; -- para sqlonline.com
+-- CREATE DATABASE gerenciador_de_estudos; -- para acessar base de dados no mysql
 
 CREATE TABLE Departamento (
   	cod_departamento CHAR(3) PRIMARY KEY,
   	nome VARCHAR(20) UNIQUE NOT NULL,
-	faculdade VARCHAR(4) 
-  	--, CHECK (faculdade IN('FMV', 'FAU', 'FCI', 'FCS', 'FAC', 'FD', 'FACE', 'FE', 'FEF', 'FT', 'FCI', 'FGA', 'FUP')
+	faculdade VARCHAR(4) CHECK (faculdade IN('FMV', 'FAU', 'FCI', 'FCS', 'FAC', 'FD', 'FACE', 'FE', 'FEF', 'FT', 'FCI', 'FGA', 'FUP'))
 );
 
 CREATE TABLE Professor (
-  id_prof CHAR(8) primary key,
+  id_prof CHAR(8) primary key, -- ver quantidade certa de caracteres
   nome VARCHAR(30) NOT NULL,
     
   email VARCHAR(30) UNIQUE,
@@ -21,8 +21,8 @@ CREATE TABLE Professor (
 
 CREATE TABLE Disciplina (
   cod_disciplina CHAR(7) primary key, 
- 
   nome VARCHAR(30) NOT NULL, 
+  
   quantidade_horas INTEGER,
   departamento CHAR(3),
   
@@ -33,15 +33,13 @@ CREATE TABLE Disciplina (
 CREATE TABLE Turma (
   id_turma INTEGER PRIMARY KEY AUTOINCREMENT,
   
-  professor CHAR(8) NOT NULL,
+  id_professor CHAR(8) NOT NULL,  -- ver quantidade certa de caracteres
   disciplina CHAR(7) NOT NULL,
-  horario VARCHAR(10),
-  sala VARCHAR(10),
+  horario VARCHAR(16),
+  sala VARCHAR(16),
     
-  foreign key (professor) 
-  	references Professor(id_prof),
-  foreign key (disciplina) 
-  	references Disciplina(cod_disciplina)
+  foreign key (id_professor) references Professor(id_prof),
+  foreign key (disciplina) references Disciplina(cod_disciplina)
 );
 
 CREATE TABLE Aluno 
@@ -61,8 +59,7 @@ CREATE TABLE Curso
   turno CHAR(3),
   departamento CHAR(3),
 
-  FOREIGN KEY (departamento)
-  	REFERENCES Departamento(cod_departamento)  
+  FOREIGN KEY (departamento) REFERENCES Departamento(cod_departamento)  
 );
 
 CREATE TABLE Avaliacao (
@@ -94,9 +91,8 @@ CREATE TABLE FeedbackDiscip
 (
   id_fb INTEGER PRIMARY KEY AUTOINCREMENT,
 	
-  dificuldade VARCHAR(12), 
+  dificuldade VARCHAR(12) CHECK (dificuldade IN(1,2,3,4,5)), 
   comentario VARCHAR(204), 
 	
-  nota_prof INTEGER
-  	-- 1 a 10 ou 1 a 5? (restrição)
+  nota_prof INTEGER CHECK (nota_prof IN(1,2,3,4,5))
 );
