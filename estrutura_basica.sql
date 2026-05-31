@@ -1,6 +1,10 @@
+--DROP TABLE IF EXISTS demo -- para sqlonline.com
+
 CREATE TABLE Departamento (
-  cod_departamento CHAR(3) PRIMARY KEY,
-  nome VARCHAR(20) UNIQUE NOT NULL
+  	cod_departamento CHAR(3) PRIMARY KEY,
+  	nome VARCHAR(20) UNIQUE NOT NULL,
+	faculdade VARCHAR(4) 
+  	--, CHECK (faculdade IN('FMV', 'FAU', 'FCI', 'FCS', 'FAC', 'FD', 'FACE', 'FE', 'FEF', 'FT', 'FCI', 'FGA', 'FUP')
 );
 
 CREATE TABLE Professor (
