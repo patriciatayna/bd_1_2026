@@ -79,7 +79,7 @@ CREATE TABLE Avaliacao
 CREATE TABLE Conteudo 
 (
   cod_cont INTEGER PRIMARY KEY, 
-  cod_disc CHAR(9) NOT NULL,
+  cod_disc CHAR(7) NOT NULL,
   titulo VARCHAR(64) NOT NULL, 
   descricao VARCHAR(204),
 
