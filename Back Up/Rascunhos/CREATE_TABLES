@@ -1,0 +1,123 @@
+-- Rascunho para criar as tables
+CREATE TABLE PROFESSOR
+(
+  id_prof INT NOT NULL,
+  Nome INT NOT NULL,
+  E-mail INT NOT NULL,
+  departamento INT NOT NULL,
+  PRIMARY KEY (id_prof)
+);
+
+CREATE TABLE DISCIPLINA
+(
+  nome INT NOT NULL,
+  id_disciplina INT NOT NULL,
+  departamento INT NOT NULL,
+  carga_horaria INT NOT NULL,
+  PRIMARY KEY (id_disciplina)
+);
+
+CREATE TABLE TURMA
+(
+  id_turma INT NOT NULL,
+  sala INT,
+  horario INT,
+  id_disciplina INT NOT NULL,
+  PRIMARY KEY (id_turma),
+  FOREIGN KEY (id_disciplina) REFERENCES DISCIPLINA(id_disciplina)
+);
+
+CREATE TABLE AVALIACAO
+(
+  id_avaliacao INT NOT NULL,
+  titulo INT NOT NULL,
+  tipo INT NOT NULL,
+  peso INT,
+  data INT,
+  id_turma INT NOT NULL,
+  PRIMARY KEY (id_avaliacao),
+  FOREIGN KEY (id_turma) REFERENCES TURMA(id_turma)
+);
+
+CREATE TABLE CURSO
+(
+  id_curso INT NOT NULL,
+  nome INT NOT NULL,
+  turno INT,
+  departamento INT NOT NULL,
+  PRIMARY KEY (id_curso)
+);
+
+CREATE TABLE CONTEUDO
+(
+  id_conteudo INT NOT NULL,
+  titulo INT NOT NULL,
+  descricao INT,
+  id_disciplina INT NOT NULL,
+  PRIMARY KEY (id_conteudo),
+  FOREIGN KEY (id_disciplina) REFERENCES DISCIPLINA(id_disciplina)
+);
+
+CREATE TABLE ALUNO
+(
+  nome INT NOT NULL,
+  matricula INT NOT NULL,
+  senha INT NOT NULL,
+  PRIMARY KEY (matricula)
+);
+
+CREATE TABLE FEEDBACK_DISCIP
+(
+  id_feedback INT NOT NULL,
+  dificuldade INT NOT NULL,
+  comentario INT,
+  nota_prof INT,
+  id_turma INT NOT NULL,
+  matricula INT NOT NULL,
+  PRIMARY KEY (id_feedback),
+  FOREIGN KEY (id_turma) REFERENCES TURMA(id_turma),
+  FOREIGN KEY (matricula) REFERENCES ALUNO(matricula)
+);
+
+CREATE TABLE ESTUDO
+(
+  id_estudo INT NOT NULL,
+  data INT NOT NULL,
+  tempo INT,
+  status INT NOT NULL,
+  matricula INT NOT NULL,
+  id_conteudo INT NOT NULL,
+  PRIMARY KEY (id_estudo),
+  FOREIGN KEY (matricula) REFERENCES ALUNO(matricula),
+  FOREIGN KEY (id_conteudo) REFERENCES CONTEUDO(id_conteudo)
+);
+
+CREATE TABLE MINISTRA
+(
+  id_turma INT NOT NULL,
+  id_prof INT NOT NULL,
+  PRIMARY KEY (id_turma, id_prof),
+  FOREIGN KEY (id_turma) REFERENCES TURMA(id_turma),
+  FOREIGN KEY (id_prof) REFERENCES PROFESSOR(id_prof)
+);
+
+CREATE TABLE POSSUI
+(
+  id_disciplina INT NOT NULL,
+  id_curso INT NOT NULL,
+  PRIMARY KEY (id_disciplina, id_curso),
+  FOREIGN KEY (id_disciplina) REFERENCES DISCIPLINA(id_disciplina),
+  FOREIGN KEY (id_curso) REFERENCES CURSO(id_curso)
+);
+
+CREATE TABLE REGISTRO
+(
+  status INT NOT NULL,
+  semestre INT NOT NULL,
+  faltas INT NOT NULL,
+  matricula INT NOT NULL,
+  id_turma INT NOT NULL,
+  PRIMARY KEY (matricula, id_turma),
+  FOREIGN KEY (matricula) REFERENCES ALUNO(matricula),
+  FOREIGN KEY (id_turma) REFERENCES TURMA(id_turma)
+);
