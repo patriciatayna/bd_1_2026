@@ -1,0 +1,129 @@
+DROP TABLE IF EXISTS Feedback;
+DROP TABLE IF EXISTS Estudos;
+DROP TABLE IF EXISTS Historico;
+DROP TABLE IF EXISTS Avaliacao;
+DROP TABLE IF EXISTS Curso_Disc;
+DROP TABLE IF EXISTS Conteudo;
+DROP TABLE IF EXISTS Turma;
+DROP TABLE IF EXISTS Curso;
+DROP TABLE IF EXISTS Aluno;
+DROP TABLE IF EXISTS Disciplina;
+DROP TABLE IF EXISTS Professor;
+
+CREATE TABLE Professor 
+(
+  cod_prof INTEGER PRIMARY KEY,
+  nome VARCHAR(30) NOT NULL,
+  email VARCHAR(30) UNIQUE,
+  departamento CHAR(3)
+);
+
+CREATE TABLE Disciplina 
+(
+  cod_disc CHAR(7) primary key, 
+  nome VARCHAR(30) NOT NULL, 
+  horas INTEGER,
+  departamento CHAR(3)
+);
+
+CREATE TABLE Turma 
+(
+  cod_turma INTEGER PRIMARY KEY,
+  cod_prof INTEGER NOT NULL,
+  cod_disc CHAR(7),
+  horario VARCHAR(16),
+  sala VARCHAR(16),
+  
+  FOREIGN KEY (cod_prof) REFERENCES Professor(cod_prof),
+  FOREIGN KEY (cod_disc) REFERENCES Disciplina(cod_disc)
+);
+
+CREATE TABLE Aluno 
+(
+  matricula CHAR(9) PRIMARY KEY,
+  nome VARCHAR(32) NOT NULL,
+  senha VARCHAR(12)
+);
+
+CREATE TABLE Curso
+(
+  cod_curso INTEGER PRIMARY KEY,
+  nome VARCHAR(32) NOT NULL,
+  departamento CHAR(3),
+  turno CHAR(3)
+);
+
+CREATE TABLE Curso_Disc
+(
+  cod_curso INTEGER NOT NULL,
+  cod_disc CHAR(7) NOT NULL,
+  PRIMARY KEY (cod_curso, cod_disc),
+  FOREIGN KEY(cod_curso) REFERENCES Curso(cod_curso),
+  FOREIGN KEY(cod_disc) REFERENCES Disciplina(cod_disc)
+  
+);
+
+CREATE TABLE Avaliacao 
+(
+  cod_ava INTEGER PRIMARY KEY,
+  cod_turma INTEGER NOT NULL,
+  
+  data DATE, 
+  titulo VARCHAR(64) NOT NULL,
+  tipo VARCHAR(24),
+  peso INTEGER,
+
+  FOREIGN KEY(cod_turma) REFERENCES Turma(cod_turma)
+);
+
+CREATE TABLE Conteudo 
+(
+  cod_cont INTEGER PRIMARY KEY, 
+  cod_disc CHAR(7) NOT NULL,
+  titulo VARCHAR(64) NOT NULL, 
+  descricao VARCHAR(204),
+
+  FOREIGN KEY (cod_disc) REFERENCES Disciplina(cod_disc)
+);
+
+CREATE TABLE Estudos 
+(
+  cod_est INTEGER PRIMARY KEY,
+  cod_cont INTEGER NOT NULL,
+  matricula CHAR(9) NOT NULL, 
+  status CHAR(12), 
+  data DATE,
+  tempo INTEGER,
+
+  FOREIGN KEY (cod_cont) REFERENCES Conteudo(cod_cont),
+  FOREIGN KEY (matricula) REFERENCES Aluno(matricula)
+);
+
+CREATE TABLE Feedback
+(
+  cod_feed INTEGER PRIMARY KEY,
+  cod_turma CHAR(7) NOT NULL,
+  matricula CHAR(9) NOT NULL,
+  
+	
+  dificuldade INTEGER CHECK (nota_prof IN(1,2,3,4,5)),
+  comentario VARCHAR(204), 
+	
+  nota_prof INTEGER CHECK (nota_prof IN(1,2,3,4,5)),
+
+  FOREIGN KEY (cod_turma) REFERENCES Turma(cod_turma),
+  FOREIGN KEY (matricula) REFERENCES Aluno(matricula)  
+);
+
+CREATE TABLE Historico
+(
+  matricula CHAR(9) NOT NULL,
+  cod_turma CHAR(7) NOT NULL,
+  faltas INTEGER,
+  status CHAR(12),
+  semestre VARCHAR(12),
+
+  PRIMARY KEY (matricula, cod_turma),
+  FOREIGN KEY (matricula) REFERENCES Aluno(matricula),
+  FOREIGN KEY (cod_turma) REFERENCES Turma(cod_turma)
+);
