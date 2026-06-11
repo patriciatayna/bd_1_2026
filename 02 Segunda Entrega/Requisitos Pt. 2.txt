@@ -1,0 +1,44 @@
+
+OK - Primeira Parte do Projeto: 
+OK - • Introdução  
+OK - • Modelo de Entidade Relacionamento. Usando alguma ferramenta de modelagem.  
+OK - • Modelo Relacional. Usando alguma ferramenta de modelagem.  
+OK - • O script SQL que gerou o banco de dados  
+OK - • A indicação do uso de IA. 
+
+Entrega Final do Projeto: 
+• Introdução  
+• Modelo de Entidade Relacionamento. Usando alguma ferramenta de modelagem.  
+• Modelo Relacional. Usando alguma ferramenta de modelagem.  
+• O script SQL que gerou o banco de dados. 
+▪ Na implementação de pelo menos uma tabela usar um gerador de chave 
+primária automático do SGBD selecionado para o projeto. 
+• A construção da camada de persistência. Enviar o link do github com os códigos 
+fontes e um diagrama apresentando como a interface gráfica do programa acessa a 
+camada de persistência.  
+• Um programa com as funções de CRUD (Create Read Update Delete) para o seu 
+sistema.   
+▪ Acessar mais de uma tabela nas mesmas funções CRUD para garantir 
+integridade referencial 
+• Utilização de pelo menos uma View.  
+• Utilização de pelo menos uma Procedure.  
+• Utilização de pelo menos um Trigger.  
+• Inserção de um dado binário no banco, pode ser foto, arquivo PDF ou outro tipo 
+de arquivo.  
+• A indicação do uso de IA. 
+
+Encaminhar pelo Aprender3, no formato pdf em apenas UM arquivo para a primeira entrega:  
+• Introdução  
+• Diagrama de Entidade Relacionamento  
+• Modelo Relacional  
+• A indicação do uso de IA 
+No formato pdf em apenas UM arquivo para a entrega final:  
+• Introdução  
+• Diagrama de Entidade Relacionamento  
+• Modelo Relacional  
+• O diagrama da camada de mapeamento para uma tabela do banco de dados  
+• No início do PDF informar o endereço do github no início do projeto 
+• A indicação do uso de IA 
+Colocar no github  
+• O script SQL que gerou o banco de dados  
+• Todos os códigos do projeto. 
